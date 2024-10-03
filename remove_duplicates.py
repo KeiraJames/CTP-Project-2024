@@ -19,8 +19,7 @@ def find_and_remove_duplicates(folder_path):
     if not os.path.exists(folder_path):
 
         print(f"The folder '{folder_path}' may not exist.")
-        r
-        eturn
+        return
 
     print(f"Scanning folder: {folder_path}")
 
