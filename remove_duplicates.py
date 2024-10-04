@@ -54,4 +54,5 @@ def find_and_remove_duplicates(folder_path):
 if __name__ == '__main__':
     folder = input("Enter the path to the folder containing photos: ")
     find_and_remove_duplicates(folder)
+    
 
