@@ -1,0 +1,179 @@
+/* Reset and global styles */
+* {
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #001220 !important;
+}
+
+html,
+body {
+  height: 100vh !important;
+  width: 100%;
+  overflow-x: hidden;
+  padding: 0 !important;
+}
+
+/* Title Styling */
+.title {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2em; /* Scalable font size */
+  text-align: center;
+  background: linear-gradient(to right, #16f0da 0%, #ff93ed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 !important;
+}
+
+/* Upload Line */
+.upload_line {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  color: white;
+  margin: 1em 0;
+}
+@keyframes blink {
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0.5;
+  }
+}
+/* Base styles for magnifying glasses */
+.detectiveMag1,
+.detectiveMag2,
+.detectiveMag3 {
+  position: fixed;
+  width: 10vw;
+  max-width: 100px;
+  max-height: 100px;
+  animation: blink 6s infinite linear;
+}
+
+.detectiveMag2 {
+  animation-delay: 2s;
+}
+
+.detectiveMag3 {
+  animation-delay: 4s;
+}
+
+/* Result Styling */
+.result {
+  color: rgb(179, 217, 253);
+  font-size: 1.5rem;
+  z-index: 1;
+  text-align: center;
+  margin-top: 1.5em;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.resultword {
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #aae2e5 0%,
+    #edaee8 29%,
+    #421f7e 67%,
+    #ff0099 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear;
+  display: inline-block;
+  font-size: 32px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 1.8em;
+  }
+
+  .upload_line {
+    font-size: 0.9rem;
+  }
+
+  .detectiveMag1,
+  .detectiveMag2,
+  .detectiveMag3 {
+    width: 12vw; /* Slightly larger magnifying glasses */
+  }
+
+  .result {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 924px) {
+  .detectiveMag1,
+  .detectiveMag2,
+  .detectiveMag3 {
+    width: 10vw; /* Larger magnifying glasses */
+    background-color: transparent !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.5em;
+  }
+
+  .upload_line {
+    font-size: 0.8rem;
+  }
+
+  .detectiveMag1,
+  .detectiveMag2,
+  .detectiveMag3 {
+    width: 15vw; /* Larger magnifying glasses */
+    background-color: transparent !important;
+  }
+
+  .result {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.2em;
+  }
+  .upload_line {
+    font-size: 0.7rem;
+  }
+
+  .detectiveMag1,
+  .detectiveMag2,
+  .detectiveMag3 {
+    width: 20vw; /* Even larger magnifying glasses */
+  }
+
+  .result {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .detectiveMag1,
+  .detectiveMag2,
+  .detectiveMag3 {
+    visibility: hidden;
+  }
+}

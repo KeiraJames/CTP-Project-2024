@@ -1,4 +1,4 @@
-/dataset/
 /.ipynb_checkpoints/
 .DS_Store
-/art_dataset/
+EfficientNet_Models/
+CNN_model_weight/
