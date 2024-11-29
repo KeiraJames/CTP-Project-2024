@@ -24,12 +24,19 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+@st.cache_resource
+def load_models():
+    # Load all models at once
+    eff_net_model = tf.keras.models.load_model('EfficientNet_Models/efficientnetb3_binary_classifier_8.h5')
+    eff_net_art_model = tf.keras.models.load_model('EfficientNet_Models/EfficientNet_fine_tune_art_model.h5')
+    cnn_model = 'CNN_model_weight/model_weights.weights.h5'
+    return eff_net_model, eff_net_art_model, cnn_model
 
-eff_net_model = tf.keras.models.load_model('EfficientNet_Models/efficientnetb3_binary_classifier_8.h5')
-eff_net_art_model = tf.keras.models.load_model('EfficientNet_Models/EfficientNet_fine_tune_art_model.h5')
-cnn_model = 'CNN_model_weight/model_weights.weights.h5'
+# Access cached models
+eff_net_model, eff_net_art_model, cnn_model = load_models()
 
 # CNN model
+
 def run_cnn(img_arr):
     my_model = Sequential()
     my_model.add(Conv2D(
@@ -75,7 +82,6 @@ def run_effNet(img_arr):
             prediction = eff_net_model.predict(img_arr)
     return prediction
  
-   
 def run_effNet_Art(img_arr):
     try:
         resolver = tf.distribute.cluster_resolver.TPUClusterResolver()
@@ -170,6 +176,3 @@ if user_image is not None and model_name is not None:
 
     print(model_name)
     print(predictions[0])
-
-
-
