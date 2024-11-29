@@ -14,7 +14,7 @@ An image classification model that takes an image as an input, and predicts whet
 | Tesneem Essa          | Feature Engineer                            | Model Developer                                   |
 
 ## Deployed Version
-Try the project here!
+Try the project here 🎨 !
 
 https://huggingface.co/spaces/Digital-Detectives/AI-vs-Real-Image-Detection
 
@@ -70,10 +70,13 @@ Dive into the vibrant kaleidoscope of Indian art with our meticulously curated I
 8. Scikit-Learn
 9. Streamlit
 
-## Model Accuracy
+## Model Performance
 CNN Model:
       
       Accuracy: 97.62%
+      Precision: 97.6%
+      Recall : 97.6%
+      F1 score : 97.6%
 
       
 Efficiencynet Model:
