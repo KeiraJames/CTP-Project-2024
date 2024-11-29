@@ -14,7 +14,7 @@ An image classification model that takes an image as an input, and predicts whet
 | Tesneem Essa          | Feature Engineer                            | Model Developer                                   |
 
 ## Deployed Version
-Try the project here!
+Try the project here 🎨 !
 
 https://huggingface.co/spaces/Digital-Detectives/AI-vs-Real-Image-Detection
 
