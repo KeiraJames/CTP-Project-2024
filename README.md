@@ -70,7 +70,7 @@ Dive into the vibrant kaleidoscope of Indian art with our meticulously curated I
 8. Scikit-Learn
 9. Streamlit
 
-## Model Accuracy
+## Model Performance
 CNN Model:
       
       Accuracy: 97.62%
