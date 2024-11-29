@@ -13,6 +13,10 @@ An image classification model that takes an image as an input, and predicts whet
 | Keira James           | Feature Engineer                            | Model Developer                                   |
 | Tesneem Essa          | Feature Engineer                            | Model Developer                                   |
 
+## Deployed Version
+Try the project here!
+
+https://huggingface.co/spaces/Digital-Detectives/AI-vs-Real-Image-Detection
 
 ## Project Outline
 The goal of this project is to develop a deep learning model that can accurately distinguish between real images and AI-generated images. We will collect datasets of real images and fake images. The data will be preprocessed, normalized, and augmented to enhance training. Using TensorFlow and Keras, we will design a Convolutional Neural Network (CNN) for classification, and validating performance through a confusion matrix. Finally, the project will include documentation of the process, findings, and suggestions for future improvements.
@@ -66,11 +70,25 @@ Dive into the vibrant kaleidoscope of Indian art with our meticulously curated I
 8. Scikit-Learn
 9. Streamlit
 
-## Model Performance Analysis
-In progress
+## Model Accuracy
+CNN Model:
+      
+      Accuracy: 97.62%
+
+      
+Efficiencynet Model:
+
+      Accuracy: 97.72%
+      Precision: 97.4%
+      Recall : 98.05%
+      F1 score: 97.72%
+
 
 ## UI
-In progress
+
+https://github.com/user-attachments/assets/62cb9dd8-0a9e-443f-a1dd-f90f2e0ce4fd
+
+
 
 ## Practical Application
 Our project is crucial in today’s world, where AI-generated content is increasingly prevalent. This model can be used by social media platforms, news organizations, and even everyday people to verify the authenticity of images, helping to fight against misinformation and ensure the integrity of visual media.
