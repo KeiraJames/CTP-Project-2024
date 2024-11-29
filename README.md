@@ -70,7 +70,10 @@ Dive into the vibrant kaleidoscope of Indian art with our meticulously curated I
 In progress
 
 ## UI
-In progress
+
+https://github.com/user-attachments/assets/62cb9dd8-0a9e-443f-a1dd-f90f2e0ce4fd
+
+
 
 ## Practical Application
 Our project is crucial in today’s world, where AI-generated content is increasingly prevalent. This model can be used by social media platforms, news organizations, and even everyday people to verify the authenticity of images, helping to fight against misinformation and ensure the integrity of visual media.
