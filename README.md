@@ -70,8 +70,19 @@ Dive into the vibrant kaleidoscope of Indian art with our meticulously curated I
 8. Scikit-Learn
 9. Streamlit
 
-## Model Performance Analysis
-In progress
+## Model Accuracy
+CNN Model:
+      
+      Accuracy: 97.62%
+
+      
+Efficiencynet Model:
+
+      Accuracy: 97.72%
+      Precision: 97.4%
+      Recall : 98.05%
+      F1 score: 97.72%
+
 
 ## UI
 
