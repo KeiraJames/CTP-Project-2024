@@ -104,7 +104,7 @@ The model demonstrates strong performance in classifying real images, particular
 ### <ins>Efficientnet Model</ins> 🎨
 The model exhibits exceptional performance in identifying real images, including high-quality real art images. It also demonstrates strong capabilities in detecting fake images, particularly AI-generated headshots, art portraits, and nature landscapes. However, it encounters difficulties with certain AI-generated digital art styles, such as 3D animated art, neon art, cyberpunk art etc.. Despite these challenges, the model remains highly effective in accurately classifying real images and provides reliable results in detecting fake ones overall.
 
-&nbsp;&nbsp;&nbsp;&nbsp;** <ins>Note</ins> **
+&nbsp;&nbsp;&nbsp;&nbsp;**<ins>Note</ins>**
 The EfficientNet model performs better than the CNN model in areas where CNN struggles.
 Conversely, the CNN model shows better performance in areas where EfficientNet has limitations.
 
