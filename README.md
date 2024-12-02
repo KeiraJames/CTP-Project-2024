@@ -18,6 +18,10 @@ Try the project here 🎨 !
 
 https://huggingface.co/spaces/Digital-Detectives/AI-vs-Real-Image-Detection
 
+## UI
+
+https://github.com/user-attachments/assets/7d6a3c38-f7dc-4e74-8f0d-6d31653e7670
+
 ## Project Outline
 The goal of this project is to develop a deep learning model that can accurately distinguish between real images and AI-generated images. We will collect datasets of real images and fake images. The data will be preprocessed, normalized, and augmented to enhance training. Using TensorFlow and Keras, we will design a Convolutional Neural Network (CNN) for classification, and validating performance through a confusion matrix. Finally, the project will include documentation of the process, findings, and suggestions for future improvements.
 
@@ -79,19 +83,33 @@ CNN Model:
       F1 score : 97.6%
 
       
-Efficiencynet Model:
+Efficientnet Model:
 
       Accuracy: 97.72%
       Precision: 97.4%
       Recall : 98.05%
       F1 score: 97.72%
 
+Efficientnet Art Model:
 
-## UI
+      Accuracy: 98%
+      Precision: 97%
+      Recall: 98%
+      F1 score: 98%
 
-https://github.com/user-attachments/assets/62cb9dd8-0a9e-443f-a1dd-f90f2e0ce4fd
+## Model Evaluation
+### <ins>CNN Model</ins> 📸
+The model demonstrates strong performance in classifying real images, particularly those depicting nature, animals, and humans. However, it faces challenges in accurately identifying fake images and high-quality digital art. The model struggles with discerning AI-generated human headshots, occasionally misclassifying them as real. It also misclassifies certain art images, including fantasy-style art and specific scenic art, as real. Despite these limitations, the model excels in detecting fake images overall, making it a reliable tool for identifying real versus fake content in various domains.
 
+### <ins>Efficientnet Model</ins> 🎨
+The model exhibits exceptional performance in identifying real images, including high-quality real art images. It also demonstrates strong capabilities in detecting fake images, particularly AI-generated headshots, art portraits, and nature landscapes. However, it encounters difficulties with certain AI-generated digital art styles, such as 3D animated art, neon art, cyberpunk art etc.. Despite these challenges, the model remains highly effective in accurately classifying real images and provides reliable results in detecting fake ones overall.
 
+&nbsp;&nbsp;&nbsp;&nbsp;** <ins>Note</ins> **
+The EfficientNet model performs better than the CNN model in areas where CNN struggles.
+Conversely, the CNN model shows better performance in areas where EfficientNet has limitations.
+
+### <ins>Efficientnet art Model</ins> 🥸
+This model demonstrates exceptional performance in identifying fake images, particularly in categories such as animals, nature, and art. However, it faces challenges in accurately identifying real images.
 
 ## Practical Application
 Our project is crucial in today’s world, where AI-generated content is increasingly prevalent. This model can be used by social media platforms, news organizations, and even everyday people to verify the authenticity of images, helping to fight against misinformation and ensure the integrity of visual media.
