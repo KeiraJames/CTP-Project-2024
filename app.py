@@ -24,6 +24,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# load model weights
 @st.cache_resource
 def load_models():
     # Load all models at once
@@ -36,7 +37,6 @@ def load_models():
 eff_net_model, eff_net_art_model, cnn_model = load_models()
 
 # CNN model
-
 def run_cnn(img_arr):
     my_model = Sequential()
     my_model.add(Conv2D(
@@ -70,6 +70,7 @@ def run_cnn(img_arr):
     prediction = my_model.predict(img_arr)
     return prediction
 
+# efficientnet model
 def run_effNet(img_arr):
     try:
         resolver = tf.distribute.cluster_resolver.TPUClusterResolver()
@@ -82,6 +83,7 @@ def run_effNet(img_arr):
             prediction = eff_net_model.predict(img_arr)
     return prediction
  
+# efficientnet art model
 def run_effNet_Art(img_arr):
     try:
         resolver = tf.distribute.cluster_resolver.TPUClusterResolver()
@@ -94,13 +96,14 @@ def run_effNet_Art(img_arr):
             prediction = eff_net_art_model.predict(img_arr)
     return prediction
 
+# preprocess images for efficient net
 def pre_process_img_effNet(image):
     img = load_img(image, target_size=(300, 300))  # Resize image to model input size
     img_arr = img_to_array(img)  # Convert to array
     img_arr = np.expand_dims(img_arr, axis=0) # Add batch dimension
     result = run_effNet(img_arr)
     return result
-
+# preprocess images for efficient net art
 def pre_process_img_effNetArt(image):
     img = load_img(image, target_size=(224, 224))  # Resize image to model input size
     img_arr = img_to_array(img)  # Convert to array
@@ -136,13 +139,17 @@ if "reset_model" not in st.session_state:
 if "model_key" not in st.session_state:
     st.session_state.model_key = "default_model_key"
 
+#upload image widget
 user_image = st.file_uploader("png, jpg, or jpeg image", ['png', 'jpg', 'jpeg'], label_visibility='hidden')
+
+# model name select box widget reset condition. reset model name when a new image is uploaded
 if user_image != st.session_state.prev_image:
     if st.session_state.prev_image is not None: 
         st.session_state.model_key = "reset_model_key" if st.session_state.model_key == "default_model_key" else "default_model_key"
         st.session_state.reset_model = True
     st.session_state.prev_image = user_image  # set prev image to current image 
 
+# model name select box widget
 model_name = st.selectbox(
     'Choose a model',
     ['CNN', 'Efficientnet', 'Efficientnet Art'],
@@ -150,6 +157,8 @@ model_name = st.selectbox(
     placeholder='choose an option',
     key=st.session_state.model_key
 )
+
+# placeholder to display result
 result_placeholder = st.empty()
 
 # design animation elements
@@ -176,6 +185,7 @@ st.markdown(
 
 if user_image is not None and model_name is not None:
     predictions = []
+    # preprocess image and run the user selected model
     if model_name == 'CNN':
         print('CNN is running')
         predictions = pre_process_img(user_image)
@@ -191,6 +201,7 @@ if user_image is not None and model_name is not None:
     else:
          result_word = "REAL"
 
+    # display the result and the prediction
     if user_image is not None:
         if len(predictions) > 0: 
             result_placeholder.markdown(f"<div class='result'> <span class = 'prediction'>Prediction: {predictions[0][0]}</span> <br> It is a <span class = resultword> {result_word} </span> image. </div>", unsafe_allow_html=True)
