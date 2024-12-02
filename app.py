@@ -127,8 +127,29 @@ st.markdown(
      """<p class = "upload_line"> Please upload the image </p>""",
     unsafe_allow_html= True
 )
+
+# introduce states
+if "prev_image" not in st.session_state:
+    st.session_state.prev_image = None 
+if "reset_model" not in st.session_state:
+    st.session_state.reset_model = False
+if "model_key" not in st.session_state:
+    st.session_state.model_key = "default_model_key"
+
 user_image = st.file_uploader("png, jpg, or jpeg image", ['png', 'jpg', 'jpeg'], label_visibility='hidden')
-model_name = st.selectbox('Choose a model', ['CNN', 'Efficiencynet', 'Efficiencynet Art'], index=None, placeholder='choose an option')
+if user_image != st.session_state.prev_image:
+    if st.session_state.prev_image is not None: 
+        st.session_state.model_key = "reset_model_key" if st.session_state.model_key == "default_model_key" else "default_model_key"
+        st.session_state.reset_model = True
+    st.session_state.prev_image = user_image  # set prev image to current image 
+
+model_name = st.selectbox(
+    'Choose a model',
+    ['CNN', 'Efficientnet', 'Efficientnet Art'],
+    index=None,
+    placeholder='choose an option',
+    key=st.session_state.model_key
+)
 result_placeholder = st.empty()
 
 # design animation elements
@@ -158,10 +179,10 @@ if user_image is not None and model_name is not None:
     if model_name == 'CNN':
         print('CNN is running')
         predictions = pre_process_img(user_image)
-    elif model_name == 'Efficiencynet':
+    elif model_name == 'Efficientnet':
         print('Effnet is running')
         predictions = pre_process_img_effNet(user_image)
-    elif model_name == 'Efficiencynet Art':
+    elif model_name == 'Efficientnet Art':
         print('Effnet Art is running')
         predictions = pre_process_img_effNetArt(user_image)
 
@@ -172,7 +193,11 @@ if user_image is not None and model_name is not None:
 
     if user_image is not None:
         if len(predictions) > 0: 
-            result_placeholder.markdown(f"<div class='result'> It is a <span class = resultword> {result_word} </span> image </div>", unsafe_allow_html=True)
+            result_placeholder.markdown(f"<div class='result'> <span class = 'prediction'>Prediction: {predictions[0][0]}</span> <br> It is a <span class = resultword> {result_word} </span> image. </div>", unsafe_allow_html=True)
+            
 
     print(model_name)
     print(predictions[0])
+
+
+

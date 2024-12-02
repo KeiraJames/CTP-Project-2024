@@ -94,6 +94,12 @@ body {
   font-size: 32px;
 }
 
+.prediction {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  font-size: 14px;
+}
+
 @keyframes textclip {
   to {
     background-position: 200% center;
@@ -170,7 +176,7 @@ body {
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 390px) {
   .detectiveMag1,
   .detectiveMag2,
   .detectiveMag3 {
