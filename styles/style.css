@@ -1,8 +1,9 @@
 /* Reset and global styles */
 * {
-  margin: 0;
   box-sizing: border-box;
-  background-color: #001220 !important;
+  /* background-color: #001220 !important; */
+  background-color:#0f0f31 !important;
+ 
 }
 
 html,
@@ -16,12 +17,24 @@ body {
 /* Title Styling */
 .title {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 2em; /* Scalable font size */
+  font-size: 32px; /* Scalable font size */
   text-align: center;
-  background: linear-gradient(to right, #16f0da 0%, #ff93ed 100%);
+  background: linear-gradient(to right, #5af9fb 0%, #1C6DF3 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin: 0 !important;
+  margin-top: 0 !important;
+  
+}
+/* robot image */
+.st-emotion-cache-1xf0csu {
+  max-width: 55px !important;
+}
+
+/* main container */
+.stMainBlockContainer {
+  padding-left: 5rem;
+  padding-right: 5rem;
+  max-width: 100%;
 }
 
 /* Upload Line */
@@ -32,6 +45,31 @@ body {
   color: white;
   margin: 1em 0;
 }
+
+/* upload image widget customization */
+.stFileUploader span, button {
+    color: white !important; /* Set the font color to white */
+}
+
+.stSelectbox label {
+    color: white; 
+}
+.stSelectbox > div div {
+    color: white; 
+}
+
+/* select box widget customization*/
+.st-cf {
+ color: white !important;
+}
+
+.stSelectbox div[data-baseweb="select"] > div:first-child {
+    border-color: #2d408d;
+}
+.st-emotion-cache-sy3zga {
+  color: white !important;
+}
+
 @keyframes blink {
   25% {
     opacity: 0.5;
@@ -44,23 +82,13 @@ body {
   }
 }
 /* Base styles for magnifying glasses */
-.detectiveMag1,
-.detectiveMag2,
-.detectiveMag3 {
-  position: fixed;
+.detectiveMag1{
   width: 10vw;
   max-width: 100px;
   max-height: 100px;
   animation: blink 6s infinite linear;
 }
 
-.detectiveMag2 {
-  animation-delay: 2s;
-}
-
-.detectiveMag3 {
-  animation-delay: 4s;
-}
 
 /* Result Styling */
 .result {
@@ -76,10 +104,10 @@ body {
   text-transform: uppercase;
   background-image: linear-gradient(
     -225deg,
-    #aae2e5 0%,
-    #edaee8 29%,
-    #421f7e 67%,
-    #ff0099 100%
+    #8ad8e6 0%,
+    #a438f2 29%,
+    #ff007f 67%,
+    #e8a7c8 100%
   );
   background-size: auto auto;
   background-clip: border-box;
@@ -115,24 +143,8 @@ body {
   .upload_line {
     font-size: 0.9rem;
   }
-
-  .detectiveMag1,
-  .detectiveMag2,
-  .detectiveMag3 {
-    width: 12vw; /* Slightly larger magnifying glasses */
-  }
-
   .result {
     font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 924px) {
-  .detectiveMag1,
-  .detectiveMag2,
-  .detectiveMag3 {
-    width: 10vw; /* Larger magnifying glasses */
-    background-color: transparent !important;
   }
 }
 
@@ -140,16 +152,8 @@ body {
   .title {
     font-size: 1.5em;
   }
-
   .upload_line {
     font-size: 0.8rem;
-  }
-
-  .detectiveMag1,
-  .detectiveMag2,
-  .detectiveMag3 {
-    width: 15vw; /* Larger magnifying glasses */
-    background-color: transparent !important;
   }
 
   .result {
@@ -159,27 +163,23 @@ body {
 
 @media (max-width: 480px) {
   .title {
-    font-size: 1.2em;
+    font-size: 16px !important;
   }
-  .upload_line {
-    font-size: 0.7rem;
-  }
-
-  .detectiveMag1,
-  .detectiveMag2,
-  .detectiveMag3 {
-    width: 20vw; /* Even larger magnifying glasses */
-  }
+  /* robot image */
+.st-emotion-cache-1xf0csu {
+  display: none;
+}
+.upload_line {
+  margin:0rem !important;
+}
+.detectiveMag1{
+ display: none;
+}
+.st-emotion-cache-ocqkz7 {
+  gap: 0 !important;
+}
 
   .result {
     font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 390px) {
-  .detectiveMag1,
-  .detectiveMag2,
-  .detectiveMag3 {
-    visibility: hidden;
   }
 }

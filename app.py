@@ -1,4 +1,6 @@
 # imports
+import base64
+import os
 import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
@@ -119,69 +121,106 @@ def pre_process_img(image):
         img_arr = img_arr.reshape((1, 256, 256, 3))  # Add batch dimension
         result = run_cnn(img_arr)
         return result
-# title
-st.markdown(
-    """<p class = "title"> AI vs REAL Image Detection </p>""",
-    unsafe_allow_html= True
-)
 
-# upload image
-st.markdown(
-     """<p class = "upload_line"> Please upload the image </p>""",
-    unsafe_allow_html= True
-)
 
-# introduce states
-if "prev_image" not in st.session_state:
-    st.session_state.prev_image = None 
-if "reset_model" not in st.session_state:
-    st.session_state.reset_model = False
-if "model_key" not in st.session_state:
-    st.session_state.model_key = "default_model_key"
+#UI
 
-#upload image widget
-user_image = st.file_uploader("png, jpg, or jpeg image", ['png', 'jpg', 'jpeg'], label_visibility='hidden')
+#title
+col1, col2, col3,col4, col5 = st.columns([4,1,3,3,1],  gap="small")
 
-# model name select box widget reset condition. reset model name when a new image is uploaded
-if user_image != st.session_state.prev_image:
-    if st.session_state.prev_image is not None: 
-        st.session_state.model_key = "reset_model_key" if st.session_state.model_key == "default_model_key" else "default_model_key"
-        st.session_state.reset_model = True
-    st.session_state.prev_image = user_image  # set prev image to current image 
+# In the first column, display the image
+with col1:
+    st.write('')
+with col2:
+    st.image("styles/robot.png")
 
-# model name select box widget
-model_name = st.selectbox(
-    'Choose a model',
-    ['CNN', 'Efficientnet', 'Efficientnet Art'],
-    index=None,
-    placeholder='choose an option',
-    key=st.session_state.model_key
-)
+# In the second column, display the text
+with col3:
+    st.markdown(
+        """
+        <p class="title"> AI vs REAL Image Detection </p>
+        """,
+        unsafe_allow_html=True
+    )
+with col4:
+    st.write('')
+with col5:
+    st.write('')
 
-# placeholder to display result
-result_placeholder = st.empty()
+# division between photo and other widget component
+main_col_one, main_col_two = st.columns([2,2], gap="large")
+#photo column
+with main_col_one:
+    # Create a placeholder for the image
+    image_placeholder = st.empty()
 
-# design animation elements
-with open("styles/detectiveMag.svg", "r") as file:
-    svg_content_detective_Mag = file.read()
+with main_col_two:
+    with open("styles/detectiveMag.svg", "r") as file:
+        svg_content_detective_Mag = file.read()
 
-# First magnifying glass starts at bottom-right
-st.markdown(
-    f"<div class='detectiveMag1' style='bottom: 0%; right: 0%;'>{svg_content_detective_Mag}</div>",
-    unsafe_allow_html=True
-)
+    #alignment between magnifying glass image and upload line
+    col1, col2, col3,col4 = st.columns([4,4,1,3],  gap="small")
+    with col1:
+        st.write('')
+    with col2:
+        st.markdown(
+            """<p class = "upload_line"> Please upload the image </p>""",
+            unsafe_allow_html= True
+        )
+    with col3:
+        st.markdown(
+        f"<div class='detectiveMag1' style='bottom: 0%; right: 0%;'>{svg_content_detective_Mag}</div>",
+        unsafe_allow_html=True
+    )
+    with col4:
+        st.write('')
 
-# Second magnifying glass starts slightly higher up the diagonal
-st.markdown(
-    f"<div class='detectiveMag2' style='bottom: 10%; right: 10%;'>{svg_content_detective_Mag}</div>",
-    unsafe_allow_html=True
-)
 
-# Third magnifying glass starts further up the diagonal
-st.markdown(
-    f"<div class='detectiveMag3' style='bottom: 20%; right: 20%;'>{svg_content_detective_Mag}</div>",
-    unsafe_allow_html=True
-)
+                
+    # introduce states
+    if "prev_image" not in st.session_state:
+        st.session_state.prev_image = None 
+    if "reset_model" not in st.session_state:
+        st.session_state.reset_model = False
+    if "model_key" not in st.session_state:
+        st.session_state.model_key = "default_model_key"
+
+
+
+    # Upload image widget
+    user_image = st.file_uploader("png, jpg, or jpeg image", ['png', 'jpg', 'jpeg'], label_visibility='hidden')
+
+    if user_image:
+    # Convert the image to base64 encoding
+        image_bytes = user_image.read()
+        image_base64 = base64.b64encode(image_bytes).decode('utf-8')
+
+        # Display the image centered using HTML
+        image_placeholder.markdown(
+            f'<div style="display: flex; justify-content: center;">'
+            f'<img src="data:image/jpeg;base64,{image_base64}" max-width:"100%" height:"auto"/>'
+            f'</div>',
+            unsafe_allow_html=True
+        )
+
+    # model name select box widget reset condition. reset model name when a new image is uploaded
+    if user_image != st.session_state.prev_image:
+        if st.session_state.prev_image is not None: 
+            st.session_state.model_key = "reset_model_key" if st.session_state.model_key == "default_model_key" else "default_model_key"
+            st.session_state.reset_model = True
+        st.session_state.prev_image = user_image  # set prev image to current image 
+
+    # model name select box widget
+    model_name = st.selectbox(
+        'Choose a model',
+        ['CNN', 'Efficientnet', 'Efficientnet Art'],
+        index=None,
+        placeholder='choose an option',
+        key=st.session_state.model_key
+    )
+
+    # placeholder to display result
+    result_placeholder = st.empty()
 
 if user_image is not None and model_name is not None:
     predictions = []
@@ -197,15 +236,14 @@ if user_image is not None and model_name is not None:
         predictions = pre_process_img_effNetArt(user_image)
 
     if predictions[0] < 0.5:
-         result_word = "FAKE"
+         result_word = "AI Generated"
     else:
          result_word = "REAL"
 
     # display the result and the prediction
     if user_image is not None:
         if len(predictions) > 0: 
-            result_placeholder.markdown(f"<div class='result'> <span class = 'prediction'>Prediction: {predictions[0][0]}</span> <br> It is a <span class = resultword> {result_word} </span> image. </div>", unsafe_allow_html=True)
-            
+            result_placeholder.markdown(f"<div class='result'> <span class = 'prediction'>Prediction: {predictions[0][0]:.2%}</span> <br> It is a <span class = resultword> {result_word} </span> image. </div>", unsafe_allow_html=True)
 
     print(model_name)
     print(predictions[0])
