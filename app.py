@@ -128,13 +128,10 @@ def pre_process_img(image):
 #title
 col1, col2, col3,col4, col5 = st.columns([4,1,3,3,1],  gap="small")
 
-# In the first column, display the image
 with col1:
     st.write('')
 with col2:
     st.image("styles/robot.png")
-
-# In the second column, display the text
 with col3:
     st.markdown(
         """
