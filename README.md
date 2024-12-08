@@ -20,7 +20,9 @@ https://huggingface.co/spaces/Digital-Detectives/AI-vs-Real-Image-Detection
 
 ## UI
 
-https://github.com/user-attachments/assets/7d6a3c38-f7dc-4e74-8f0d-6d31653e7670
+https://github.com/user-attachments/assets/04928593-8632-4411-bda0-8b1748fc2ac4
+
+
 
 ## Project Outline
 The goal of this project is to develop a deep learning model that can accurately distinguish between real images and AI-generated images. We will collect datasets of real images and fake images. The data will be preprocessed, normalized, and augmented to enhance training. Using TensorFlow and Keras, we will design a Convolutional Neural Network (CNN) for classification, and validating performance through a confusion matrix. Finally, the project will include documentation of the process, findings, and suggestions for future improvements.
